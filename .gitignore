@@ -42,3 +42,5 @@ typechain
 #Hardhat files
 cache
 artifacts
+/package-lock.json
+/.config.js.swp

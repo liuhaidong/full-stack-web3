@@ -12,7 +12,7 @@ import {
 } from '../../config'
 import Blog from '../../artifacts/contracts/Blog.sol/Blog.json'
 
-const ipfsURI = 'https://ipfs.io/ipfs/'
+const ipfsURI = 'https://ipfs.io/ipfs'
 
 export default function Post({ post }) {
   const account = useContext(AccountContext)
@@ -63,13 +63,13 @@ export default function Post({ post }) {
 export async function getStaticPaths() {
   /* here we fetch the posts from the network */
   let provider
-  if (process.env.ENVIRONMENT === 'local') {
+ // if (process.env.ENVIRONMENT === 'local') {
     provider = new ethers.providers.JsonRpcProvider()
-  } else if (process.env.ENVIRONMENT === 'testnet') {
-    provider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.matic.today')
-  } else {
-    provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
-  }
+ // } else if (process.env.ENVIRONMENT === 'testnet') {
+ //   provider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.matic.today')
+ // } else {
+ //   provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
+ // }
 
   const contract = new ethers.Contract(contractAddress, Blog.abi, provider)
   const data = await contract.fetchPosts()
@@ -91,7 +91,9 @@ export async function getStaticProps({ params }) {
   /* post data into the page as props */
   const { id } = params
   const ipfsUrl = `${ipfsURI}/${id}`
+  console.log(ipfsUrl);
   const response = await fetch(ipfsUrl)
+  console.log("Hello world!");
   const data = await response.json()
   if(data.coverImage) {
     let coverImage = `${ipfsURI}/${data.coverImage}`
