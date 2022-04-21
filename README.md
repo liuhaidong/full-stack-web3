@@ -35,3 +35,6 @@ npm run dev
 
 # npm start
 ```
+
+TODO, create new api for IPFS
+https://ipfs.infura.io:5001/api/v0/add?stream-channels=true&progress=false

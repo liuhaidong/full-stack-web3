@@ -32,13 +32,13 @@ export default function Post() {
     /* we first fetch the individual post by ipfs hash from the network */
     if (!id) return
     let provider
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'local') {
+   // if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'local') {
       provider = new ethers.providers.JsonRpcProvider()
-    } else if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'testnet') {
-      provider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.matic.today')
-    } else {
-      provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
-    }
+  //  } else if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'testnet') {
+   //   provider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.matic.today')
+    //} else {
+   //   provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
+    //}
     const contract = new ethers.Contract(contractAddress, Blog.abi, provider)
     const val = await contract.fetchPost(id)
     const postId = val[0].toNumber()
