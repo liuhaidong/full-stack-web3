@@ -41,6 +41,13 @@ typechain
 
 #Hardhat files
 cache
-artifacts
+artifacts/@openzeppelin
+artifacts/build-info
+artifacts/hardha
 /package-lock.json
 /.config.js.swp
+/.idea/full-stack-web3.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.vscode/settings.json
+/.idea/vcs.xml
